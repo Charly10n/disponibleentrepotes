@@ -32,9 +32,11 @@ interface AppContextType {
   isAvailable: boolean;
   setAvailable: (available: boolean) => void;
   friends: Friend[];
+  setFriends: React.Dispatch<React.SetStateAction<Friend[]>>;
   addFriend: (friend: Friend) => void;
   notifications: Notification[];
   markNotificationRead: (id: string) => void;
+  markAllNotificationsRead: () => void;
   events: Event[];
   createEvent: (event: Omit<Event, 'id'>) => void;
   searchQuery: string;
@@ -59,7 +61,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   const [isAvailable, setIsAvailable] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   
-  const [friends] = useState<Friend[]>([
+  const [friends, setFriends] = useState<Friend[]>([
     {
       id: '1',
       name: 'Marie Martin',
@@ -148,8 +150,11 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   };
 
   const addFriend = (friend: Friend) => {
-    // Logique pour ajouter un ami
-    console.log('Adding friend:', friend);
+    setFriends(prev => [...prev, friend]);
+  };
+
+  const markAllNotificationsRead = () => {
+    setNotifications(prev => prev.map(n => ({ ...n, read: true })));
   };
 
   const markNotificationRead = (id: string) => {
@@ -173,9 +178,11 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
       isAvailable,
       setAvailable,
       friends,
+      setFriends,
       addFriend,
       notifications,
       markNotificationRead,
+      markAllNotificationsRead,
       events,
       createEvent,
       searchQuery,

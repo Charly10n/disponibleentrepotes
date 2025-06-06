@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import { Mail, Lock, User, LogIn, UserPlus } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 
-interface AuthScreenProps {}
-
-const AuthScreen: React.FC<AuthScreenProps> = () => {
+const AuthScreen: React.FC = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [formData, setFormData] = useState({
     name: '',

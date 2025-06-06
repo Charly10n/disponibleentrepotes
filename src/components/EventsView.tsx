@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Calendar, MapPin, Users, Clock, Plus, Vote } from 'lucide-react';
+import { MapPin, Users, Clock, Plus, Vote } from 'lucide-react';
 import { useApp } from '../contexts/AppContext';
 
 const EventsView: React.FC = () => {

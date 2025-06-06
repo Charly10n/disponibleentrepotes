@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { User, Mail, Edit3, Save, X, Calendar, MapPin, Users } from 'lucide-react';
+import { Mail, Edit3, Save, X, Calendar, MapPin, Users } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 
 const ProfileView: React.FC = () => {

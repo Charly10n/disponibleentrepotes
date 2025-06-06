@@ -3,7 +3,7 @@ import { Search, UserPlus, MessageCircle, MoreVertical } from 'lucide-react';
 import { useApp } from '../contexts/AppContext';
 
 const FriendsView: React.FC = () => {
-  const { friends, searchQuery, setSearchQuery } = useApp();
+  const { friends, searchQuery, setSearchQuery, addFriend } = useApp();
   const [showAddFriend, setShowAddFriend] = useState(false);
   const [newFriendEmail, setNewFriendEmail] = useState('');
 
@@ -13,8 +13,14 @@ const FriendsView: React.FC = () => {
 
   const handleAddFriend = (e: React.FormEvent) => {
     e.preventDefault();
-    // Logique pour ajouter un ami
-    console.log('Adding friend with email:', newFriendEmail);
+    addFriend({
+      id: Date.now().toString(),
+      name: newFriendEmail,
+      avatar: 'https://placehold.co/150',
+      isAvailable: false,
+      lastSeen: 'À l\'instant',
+      status: ''
+    });
     setNewFriendEmail('');
     setShowAddFriend(false);
   };
