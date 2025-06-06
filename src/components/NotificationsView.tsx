@@ -3,7 +3,7 @@ import { Bell, UserPlus, Calendar, MessageCircle, Check, X } from 'lucide-react'
 import { useApp } from '../contexts/AppContext';
 
 const NotificationsView: React.FC = () => {
-  const { notifications, markNotificationRead } = useApp();
+  const { notifications, markNotificationRead, markAllNotificationsRead } = useApp();
 
   const getNotificationIcon = (type: string) => {
     switch (type) {
@@ -51,7 +51,10 @@ const NotificationsView: React.FC = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold text-gray-800">Notifications</h1>
-        <button className="text-purple-600 hover:text-purple-700 text-sm font-medium">
+        <button
+          onClick={markAllNotificationsRead}
+          className="text-purple-600 hover:text-purple-700 text-sm font-medium"
+        >
           Tout marquer comme lu
         </button>
       </div>
